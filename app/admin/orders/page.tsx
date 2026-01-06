@@ -91,11 +91,11 @@ export default function AdminOrdersPage() {
 
   const getStatusBadge = (status: string) => {
     const styles: Record<string, string> = {
-      PENDING: 'bg-yellow-100 text-yellow-800',
-      PROCESSING: 'bg-blue-100 text-blue-800',
-      SHIPPED: 'bg-purple-100 text-purple-800',
-      DELIVERED: 'bg-green-100 text-green-800',
-      CANCELLED: 'bg-red-100 text-red-800',
+      PENDING: 'bg-yellow-500/15 text-yellow-500',
+      PROCESSING: 'bg-primary/10 text-primary',
+      SHIPPED: 'bg-purple-500/15 text-purple-400',
+      DELIVERED: 'bg-green-500/15 text-green-500',
+      CANCELLED: 'bg-destructive/10 text-destructive',
     };
 
     const labels: Record<string, string> = {
@@ -116,13 +116,13 @@ export default function AdminOrdersPage() {
   if (status === 'loading' || loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <p className="text-gray-600">Cargando...</p>
+        <p className="text-muted-foreground">Cargando...</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-background py-8">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-4 mb-8">
           <Button
@@ -133,38 +133,38 @@ export default function AdminOrdersPage() {
             <ArrowLeft className="h-4 w-4" />
             Volver
           </Button>
-          <h1 className="text-4xl font-bold text-gray-900">Gestionar Órdenes</h1>
+          <h1 className="text-4xl font-bold text-foreground">Gestionar Órdenes</h1>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+        <div className="bg-card rounded-2xl shadow-lg overflow-hidden border border-border">
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-gray-50 border-b">
+              <thead className="bg-muted border-b">
                 <tr>
-                  <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
+                  <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">
                     Orden ID
                   </th>
-                  <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
+                  <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">
                     Cliente
                   </th>
-                  <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
+                  <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">
                     Items
                   </th>
-                  <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
+                  <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">
                     Total
                   </th>
-                  <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
+                  <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">
                     Estado
                   </th>
-                  <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
+                  <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">
                     Fecha
                   </th>
-                  <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
+                  <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">
                     Acciones
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-200">
+              <tbody className="divide-y divide-border">
                 {orders?.map?.((order, index) => (
                   <motion.tr
                     key={order.id}
@@ -172,25 +172,25 @@ export default function AdminOrdersPage() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3, delay: index * 0.05 }}
                   >
-                    <td className="px-6 py-4 font-mono text-sm text-gray-700">
+                    <td className="px-6 py-4 font-mono text-sm text-foreground">
                       #{order.id.slice(0, 8)}
                     </td>
                     <td className="px-6 py-4">
                       <div>
-                        <p className="font-medium text-gray-900">
+                        <p className="font-medium text-foreground">
                           {order?.user?.name || 'Sin nombre'}
                         </p>
-                        <p className="text-sm text-gray-600">{order?.user?.email}</p>
+                        <p className="text-sm text-muted-foreground">{order?.user?.email}</p>
                       </div>
                     </td>
-                    <td className="px-6 py-4 text-gray-700">
+                    <td className="px-6 py-4 text-foreground">
                       {order?.items?.length ?? 0}
                     </td>
-                    <td className="px-6 py-4 font-semibold text-gray-900">
+                    <td className="px-6 py-4 font-semibold text-foreground">
                       ${order.total?.toFixed?.(2) ?? '0.00'}
                     </td>
                     <td className="px-6 py-4">{getStatusBadge(order.status)}</td>
-                    <td className="px-6 py-4 text-gray-700">
+                    <td className="px-6 py-4 text-foreground">
                       {new Date(order.createdAt).toLocaleDateString('es-ES')}
                     </td>
                     <td className="px-6 py-4">
@@ -228,26 +228,26 @@ export default function AdminOrdersPage() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.3 }}
-            className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8"
+            className="bg-card rounded-2xl shadow-2xl max-w-md w-full p-8 border border-border"
           >
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            <h2 className="text-2xl font-bold text-foreground mb-6">
               Actualizar Estado de Orden
             </h2>
 
             <div className="space-y-4">
               <div>
-                <p className="text-sm text-gray-600 mb-1">Orden ID</p>
+                <p className="text-sm text-muted-foreground mb-1">Orden ID</p>
                 <p className="font-mono text-lg">#{selectedOrder.id.slice(0, 8)}</p>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-foreground mb-2">
                   Nuevo Estado
                 </label>
                 <select
                   value={newStatus}
                   onChange={(e) => setNewStatus(e.target.value)}
-                  className="w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#60B5FF]"
+                  className="w-full rounded-md border border-input px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary bg-background text-foreground"
                 >
                   <option value="PENDING">Pendiente</option>
                   <option value="PROCESSING">Procesando</option>
@@ -267,7 +267,7 @@ export default function AdminOrdersPage() {
                 </Button>
                 <Button
                   onClick={handleUpdateStatus}
-                  className="flex-1 bg-[#60B5FF] hover:bg-[#4A9FE8]"
+                  className="flex-1 bg-primary hover:bg-primary/90"
                 >
                   Actualizar
                 </Button>

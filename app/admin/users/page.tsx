@@ -81,13 +81,13 @@ export default function AdminUsersPage() {
   if (status === 'loading' || loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <p className="text-gray-600">Cargando...</p>
+        <p className="text-muted-foreground">Cargando...</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-background py-8">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center gap-4">
@@ -99,7 +99,7 @@ export default function AdminUsersPage() {
               <ArrowLeft className="h-4 w-4" />
               Volver
             </Button>
-            <h1 className="text-4xl font-bold text-gray-900">Gestionar Usuarios</h1>
+            <h1 className="text-4xl font-bold text-foreground">Gestionar Usuarios</h1>
           </div>
           <Button
             onClick={() => router.push('/admin/users/new')}
@@ -110,32 +110,32 @@ export default function AdminUsersPage() {
           </Button>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+        <div className="bg-card rounded-2xl shadow-lg overflow-hidden border border-border">
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-gray-50 border-b">
+              <thead className="bg-muted border-b">
                 <tr>
-                  <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
+                  <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">
                     Usuario
                   </th>
-                  <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
+                  <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">
                     Email
                   </th>
-                  <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
+                  <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">
                     Rol
                   </th>
-                  <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
+                  <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">
                     Órdenes
                   </th>
-                  <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
+                  <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">
                     Fecha Registro
                   </th>
-                  <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
+                  <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">
                     Acciones
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-200">
+              <tbody className="divide-y divide-border">
                 {users?.map?.((user, index) => (
                   <motion.tr
                     key={user.id}
@@ -145,21 +145,21 @@ export default function AdminUsersPage() {
                   >
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
-                        <div className="bg-[#60B5FF]/10 p-2 rounded-full">
-                          <UserIcon className="h-5 w-5 text-[#60B5FF]" />
+                        <div className="bg-primary/10 p-2 rounded-full">
+                          <UserIcon className="h-5 w-5 text-primary" />
                         </div>
-                        <span className="font-medium text-gray-900">
+                        <span className="font-medium text-foreground">
                           {user.name || 'Sin nombre'}
                         </span>
                       </div>
                     </td>
-                    <td className="px-6 py-4 text-gray-700">{user.email}</td>
+                    <td className="px-6 py-4 text-muted-foreground">{user.email}</td>
                     <td className="px-6 py-4">
                       <span
                         className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold ${
                           user.role === 'ADMIN'
-                            ? 'bg-purple-100 text-purple-800'
-                            : 'bg-blue-100 text-blue-800'
+                            ? 'bg-purple-500/15 text-purple-400'
+                            : 'bg-primary/10 text-primary'
                         }`}
                       >
                         {user.role === 'ADMIN' ? (
@@ -170,10 +170,10 @@ export default function AdminUsersPage() {
                         {user.role === 'ADMIN' ? 'Admin' : 'Cliente'}
                       </span>
                     </td>
-                    <td className="px-6 py-4 text-gray-700">
+                    <td className="px-6 py-4 text-foreground">
                       {user?._count?.orders ?? 0}
                     </td>
-                    <td className="px-6 py-4 text-gray-700">
+                    <td className="px-6 py-4 text-foreground">
                       {new Date(user.createdAt).toLocaleDateString('es-ES')}
                     </td>
                     <td className="px-6 py-4">

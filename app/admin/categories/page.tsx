@@ -131,13 +131,13 @@ export default function AdminCategoriesPage() {
   if (status === 'loading' || loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <p className="text-gray-600">Cargando...</p>
+        <p className="text-muted-foreground">Cargando...</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-background py-8">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center gap-4">
@@ -149,11 +149,11 @@ export default function AdminCategoriesPage() {
               <ArrowLeft className="h-4 w-4" />
               Volver
             </Button>
-            <h1 className="text-4xl font-bold text-gray-900">Gestionar Categorías</h1>
+            <h1 className="text-4xl font-bold text-foreground">Gestionar Categorías</h1>
           </div>
           <Button
             onClick={openCreateModal}
-            className="bg-[#60B5FF] hover:bg-[#4A9FE8] gap-2"
+            className="bg-primary hover:bg-primary/90 gap-2"
           >
             <Plus className="h-5 w-5" />
             Nueva Categoría
@@ -167,11 +167,11 @@ export default function AdminCategoriesPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: index * 0.05 }}
-              className="bg-white rounded-lg shadow-md p-6"
+              className="bg-card rounded-lg shadow-md p-6 border border-border"
             >
               <div className="flex items-start justify-between mb-4">
-                <div className="bg-[#60B5FF]/10 p-3 rounded-lg">
-                  <Tag className="h-8 w-8 text-[#60B5FF]" />
+                <div className="bg-primary/10 p-3 rounded-lg">
+                  <Tag className="h-8 w-8 text-primary" />
                 </div>
                 <div className="flex gap-2">
                   <Button
@@ -185,19 +185,19 @@ export default function AdminCategoriesPage() {
                     onClick={() => handleDelete(category.id)}
                     variant="ghost"
                     size="sm"
-                    className="text-red-500 hover:text-red-700 hover:bg-red-50"
+                    className="text-destructive hover:text-destructive hover:bg-destructive/10"
                   >
                     <Trash2 className="h-4 w-4" />
                   </Button>
                 </div>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
+              <h3 className="text-xl font-semibold text-foreground mb-2">
                 {category.name}
               </h3>
-              <p className="text-sm text-gray-600 mb-4">
+              <p className="text-sm text-muted-foreground mb-4">
                 {category.description || 'Sin descripción'}
               </p>
-              <p className="text-sm text-[#60B5FF] font-medium">
+              <p className="text-sm text-primary font-medium">
                 {category?._count?.products ?? 0} productos
               </p>
             </motion.div>
@@ -212,15 +212,15 @@ export default function AdminCategoriesPage() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.3 }}
-            className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8"
+            className="bg-card rounded-2xl shadow-2xl max-w-md w-full p-8 border border-border"
           >
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            <h2 className="text-2xl font-bold text-foreground mb-6">
               {editingCategory ? 'Editar Categoría' : 'Nueva Categoría'}
             </h2>
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-foreground mb-2">
                   Nombre
                 </label>
                 <Input
@@ -233,14 +233,14 @@ export default function AdminCategoriesPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-foreground mb-2">
                   Descripción
                 </label>
                 <textarea
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   rows={3}
-                  className="w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#60B5FF]"
+                  className="w-full rounded-md border border-input px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary bg-background"
                   placeholder="Descripción de la categoría (opcional)"
                 />
               </div>
@@ -256,7 +256,7 @@ export default function AdminCategoriesPage() {
                 </Button>
                 <Button
                   type="submit"
-                  className="flex-1 bg-[#60B5FF] hover:bg-[#4A9FE8]"
+                  className="flex-1 bg-primary hover:bg-primary/90"
                 >
                   {editingCategory ? 'Actualizar' : 'Crear'}
                 </Button>

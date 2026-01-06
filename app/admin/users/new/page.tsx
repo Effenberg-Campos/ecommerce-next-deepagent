@@ -53,7 +53,7 @@ export default function NewUserPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-background py-8">
       <div className="container mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-4 mb-8">
           <Button
@@ -64,10 +64,10 @@ export default function NewUserPage() {
             <ArrowLeft className="h-4 w-4" />
             Volver
           </Button>
-          <h1 className="text-4xl font-bold text-gray-900">Crear Nuevo Usuario</h1>
+          <h1 className="text-4xl font-bold text-foreground">Crear Nuevo Usuario</h1>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-lg p-8">
+        <div className="bg-card rounded-2xl shadow-lg p-8 border border-border">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
               <Label htmlFor="name">Nombre Completo</Label>
@@ -110,7 +110,7 @@ export default function NewUserPage() {
                 required
                 minLength={6}
               />
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-muted-foreground">
                 La contraseña debe tener al menos 6 caracteres
               </p>
             </div>
@@ -131,7 +131,7 @@ export default function NewUserPage() {
                   <SelectItem value="ADMIN">Administrador</SelectItem>
                 </SelectContent>
               </Select>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-muted-foreground">
                 Los administradores tienen acceso completo al panel de administración
               </p>
             </div>
@@ -140,7 +140,7 @@ export default function NewUserPage() {
               <Button
                 type="submit"
                 disabled={loading}
-                className="flex-1"
+                className="flex-1 bg-primary hover:bg-primary/90"
               >
                 {loading ? 'Creando...' : 'Crear Usuario'}
               </Button>
