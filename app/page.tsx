@@ -71,9 +71,9 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+    <div className="min-h-screen bg-gradient-to-b from-background to-muted">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-[#60B5FF] to-[#4A9FE8] text-white py-20">
+      <section className="bg-gradient-to-r from-primary to-primary/80 text-primary-foreground py-20">
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
           <motion.h1
             initial={{ opacity: 0, y: -20 }}
@@ -101,7 +101,7 @@ export default function HomePage() {
           <div className="mb-8 space-y-4">
             <div className="flex items-center gap-4">
               <div className="relative flex-1">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                 <Input
                   type="text"
                   placeholder="Buscar productos..."
@@ -113,12 +113,12 @@ export default function HomePage() {
             </div>
 
             <div className="flex items-center gap-2 flex-wrap">
-              <Filter className="h-5 w-5 text-gray-600" />
+              <Filter className="h-5 w-5 text-muted-foreground" />
               <Button
                 variant={selectedCategory === '' ? 'default' : 'outline'}
                 size="sm"
                 onClick={() => setSelectedCategory('')}
-                className={selectedCategory === '' ? 'bg-[#60B5FF] hover:bg-[#4A9FE8]' : ''}
+                className={selectedCategory === '' ? 'bg-primary hover:bg-primary/90' : ''}
               >
                 Todos
               </Button>
@@ -128,7 +128,7 @@ export default function HomePage() {
                   variant={selectedCategory === category.id ? 'default' : 'outline'}
                   size="sm"
                   onClick={() => setSelectedCategory(category.id)}
-                  className={selectedCategory === category.id ? 'bg-[#60B5FF] hover:bg-[#4A9FE8]' : ''}
+                  className={selectedCategory === category.id ? 'bg-primary hover:bg-primary/90' : ''}
                 >
                   {category.name}
                 </Button>
@@ -139,7 +139,7 @@ export default function HomePage() {
           {/* Products Grid */}
           {loading ? (
             <div className="text-center py-12">
-              <p className="text-gray-600">Cargando productos...</p>
+              <p className="text-muted-foreground">Cargando productos...</p>
             </div>
           ) : products?.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -149,7 +149,7 @@ export default function HomePage() {
             </div>
           ) : (
             <div className="text-center py-12">
-              <p className="text-gray-600">No se encontraron productos</p>
+              <p className="text-muted-foreground">No se encontraron productos</p>
             </div>
           )}
         </div>

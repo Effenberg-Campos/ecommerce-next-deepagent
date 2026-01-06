@@ -91,7 +91,7 @@ export default function OrderDetailPage() {
   if (status === 'loading' || loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <p className="text-gray-600">Cargando orden...</p>
+        <p className="text-muted-foreground">Cargando orden...</p>
       </div>
     );
   }
@@ -101,7 +101,7 @@ export default function OrderDetailPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
+    <div className="min-h-screen bg-background py-12">
       <div className="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <Button
           variant="ghost"
@@ -119,13 +119,13 @@ export default function OrderDetailPage() {
           className="space-y-6"
         >
           {/* Header */}
-          <div className="bg-white rounded-2xl shadow-lg p-8">
+          <div className="bg-card rounded-2xl shadow-lg p-8">
             <div className="flex items-start justify-between mb-6">
               <div>
-                <h1 className="text-3xl font-bold text-gray-900 mb-2">
+                <h1 className="text-3xl font-bold text-foreground mb-2">
                   Orden #{order.id.slice(0, 8)}
                 </h1>
-                <p className="text-gray-600">
+                <p className="text-muted-foreground">
                   Realizada el {new Date(order.createdAt).toLocaleDateString('es-ES', {
                     year: 'numeric',
                     month: 'long',
@@ -139,24 +139,24 @@ export default function OrderDetailPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 border-t pt-6">
               <div>
                 <h2 className="text-lg font-semibold mb-2 flex items-center gap-2">
-                  <Package className="h-5 w-5 text-[#60B5FF]" />
+                  <Package className="h-5 w-5 text-primary" />
                   Información de Envío
                 </h2>
-                <p className="text-gray-700">{order.shippingName}</p>
-                <p className="text-gray-600">{order.shippingEmail}</p>
-                <p className="text-gray-600 mt-2">{order.shippingAddress}</p>
+                <p className="text-foreground">{order.shippingName}</p>
+                <p className="text-muted-foreground">{order.shippingEmail}</p>
+                <p className="text-muted-foreground mt-2">{order.shippingAddress}</p>
               </div>
               <div>
                 <h2 className="text-lg font-semibold mb-2">Resumen</h2>
                 <div className="space-y-2">
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Subtotal</span>
+                    <span className="text-muted-foreground">Subtotal</span>
                     <span className="font-medium">${order.total?.toFixed?.(2) ?? '0.00'}</span>
                   </div>
                   <div className="border-t pt-2">
                     <div className="flex justify-between text-xl font-bold">
                       <span>Total</span>
-                      <span className="text-[#60B5FF]">${order.total?.toFixed?.(2) ?? '0.00'}</span>
+                      <span className="text-primary">${order.total?.toFixed?.(2) ?? '0.00'}</span>
                     </div>
                   </div>
                 </div>
@@ -165,8 +165,8 @@ export default function OrderDetailPage() {
           </div>
 
           {/* Items */}
-          <div className="bg-white rounded-2xl shadow-lg p-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Productos</h2>
+          <div className="bg-card rounded-2xl shadow-lg p-8">
+            <h2 className="text-2xl font-bold text-foreground mb-6">Productos</h2>
             <div className="space-y-4">
               {order?.items?.map?.((item, index) => (
                 <motion.div
@@ -176,7 +176,7 @@ export default function OrderDetailPage() {
                   transition={{ duration: 0.4, delay: index * 0.1 }}
                   className="flex gap-4 p-4 border rounded-lg"
                 >
-                  <div className="relative h-20 w-20 flex-shrink-0 rounded-md overflow-hidden bg-gray-100">
+                  <div className="relative h-20 w-20 flex-shrink-0 rounded-md overflow-hidden bg-muted">
                     {item?.product?.images?.[0] ? (
                       <Image
                         src={item.product.images[0]}
@@ -185,24 +185,24 @@ export default function OrderDetailPage() {
                         className="object-cover"
                       />
                     ) : (
-                      <div className="flex h-full items-center justify-center text-gray-400 text-xs">
+                      <div className="flex h-full items-center justify-center text-muted-foreground text-xs">
                         Sin imagen
                       </div>
                     )}
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-gray-900">
+                    <h3 className="text-lg font-semibold text-foreground">
                       {item?.product?.name}
                     </h3>
-                    <p className="text-gray-600">
+                    <p className="text-muted-foreground">
                       Cantidad: {item.quantity}
                     </p>
                   </div>
                   <div className="text-right">
-                    <p className="text-lg font-bold text-gray-900">
+                    <p className="text-lg font-bold text-foreground">
                       ${item.price?.toFixed?.(2) ?? '0.00'}
                     </p>
-                    <p className="text-sm text-gray-600">
+                    <p className="text-sm text-muted-foreground">
                       Total: ${((item?.price ?? 0) * (item?.quantity ?? 0)).toFixed(2)}
                     </p>
                   </div>

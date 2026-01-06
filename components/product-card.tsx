@@ -66,8 +66,8 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
       viewport={{ once: true }}
     >
       <Link href={`/products/${product.id}`}>
-        <div className="group cursor-pointer rounded-lg bg-white p-4 shadow-md hover:shadow-xl transition-all duration-300">
-          <div className="relative aspect-square w-full overflow-hidden rounded-md bg-gray-100 mb-4">
+        <div className="group cursor-pointer rounded-lg bg-card p-4 shadow-md hover:shadow-xl transition-all duration-300">
+          <div className="relative aspect-square w-full overflow-hidden rounded-md bg-muted mb-4">
             {product?.images?.[0] ? (
               <Image
                 src={product.images[0]}
@@ -76,30 +76,30 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
               />
             ) : (
-              <div className="flex h-full items-center justify-center text-gray-400">
+              <div className="flex h-full items-center justify-center text-muted-foreground">
                 Sin imagen
               </div>
             )}
           </div>
           
           <div className="space-y-2">
-            <p className="text-xs text-[#60B5FF] font-medium uppercase">
+            <p className="text-xs text-primary font-medium uppercase">
               {product?.category?.name}
             </p>
-            <h3 className="text-lg font-semibold text-gray-900 line-clamp-1">
+            <h3 className="text-lg font-semibold text-foreground line-clamp-1">
               {product.name}
             </h3>
-            <p className="text-sm text-gray-600 line-clamp-2">
+            <p className="text-sm text-muted-foreground line-clamp-2">
               {product.description}
             </p>
             
             <div className="flex items-center justify-between pt-2">
-              <p className="text-2xl font-bold text-gray-900">
+              <p className="text-2xl font-bold text-foreground">
                 ${product.price?.toFixed?.(2) ?? '0.00'}
               </p>
               <Button
                 size="sm"
-                className="bg-[#60B5FF] hover:bg-[#4A9FE8] gap-2"
+                className="bg-primary hover:bg-primary/90 gap-2"
                 onClick={addToCart}
               >
                 <ShoppingCart className="h-4 w-4" />

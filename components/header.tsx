@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useSession, signOut } from 'next-auth/react';
 import { ShoppingCart, User, LogOut, LayoutDashboard } from 'lucide-react';
 import { Button } from './ui/button';
+import { ThemeToggle } from './theme-toggle';
 import { useEffect, useState } from 'react';
 
 export function Header() {
@@ -51,10 +52,10 @@ export function Header() {
   const isAdmin = (session?.user as any)?.role === 'ADMIN';
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-white/80 backdrop-blur-md">
+    <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          <Link href="/" className="text-2xl font-bold text-[#60B5FF] hover:text-[#4A9FE8] transition-colors">
+          <Link href="/" className="text-2xl font-bold text-primary hover:text-primary/90 transition-colors">
             ShopHub
           </Link>
 
@@ -84,9 +85,10 @@ export function Header() {
                     )}
                   </Button>
                 </Link>
+                <ThemeToggle />
                 <div className="flex items-center gap-2">
-                  <User className="h-5 w-5 text-gray-600" />
-                  <span className="text-sm text-gray-700">{session.user?.name || session.user?.email}</span>
+                  <User className="h-5 w-5 text-muted-foreground" />
+                  <span className="text-sm text-foreground">{session.user?.name || session.user?.email}</span>
                 </div>
                 <Button
                   variant="ghost"
@@ -100,13 +102,14 @@ export function Header() {
               </>
             ) : (
               <>
+                <ThemeToggle />
                 <Link href="/login">
                   <Button variant="ghost" size="sm">
                     Iniciar Sesión
                   </Button>
                 </Link>
                 <Link href="/signup">
-                  <Button size="sm" className="bg-[#60B5FF] hover:bg-[#4A9FE8]">
+                  <Button size="sm" className="bg-primary hover:bg-primary/90">
                     Registrarse
                   </Button>
                 </Link>

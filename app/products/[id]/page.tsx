@@ -85,7 +85,7 @@ export default function ProductDetailPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <p className="text-gray-600">Cargando...</p>
+        <p className="text-muted-foreground">Cargando...</p>
       </div>
     );
   }
@@ -95,7 +95,7 @@ export default function ProductDetailPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
+    <div className="min-h-screen bg-background py-12">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Button
           variant="ghost"
@@ -110,11 +110,11 @@ export default function ProductDetailPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white rounded-2xl shadow-lg p-8"
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-card rounded-2xl shadow-lg p-8"
         >
           {/* Image Gallery */}
           <div className="space-y-4">
-            <div className="relative aspect-square w-full rounded-lg overflow-hidden bg-gray-100">
+            <div className="relative aspect-square w-full rounded-lg overflow-hidden bg-muted">
               {product?.images?.[selectedImage] ? (
                 <Image
                   src={product.images[selectedImage]}
@@ -153,20 +153,20 @@ export default function ProductDetailPage() {
           {/* Product Info */}
           <div className="space-y-6">
             <div>
-              <p className="text-sm text-[#60B5FF] font-medium uppercase mb-2">
+              <p className="text-sm text-primary font-medium uppercase mb-2">
                 {product?.category?.name}
               </p>
-              <h1 className="text-4xl font-bold text-gray-900 mb-4">
+              <h1 className="text-4xl font-bold text-foreground mb-4">
                 {product.name}
               </h1>
-              <p className="text-3xl font-bold text-[#60B5FF]">
+              <p className="text-3xl font-bold text-primary">
                 ${product.price?.toFixed?.(2) ?? '0.00'}
               </p>
             </div>
 
-            <div className="border-t border-b py-6">
+            <div className="border-t pt-6">
               <h2 className="text-lg font-semibold mb-2">Descripción</h2>
-              <p className="text-gray-700 leading-relaxed">
+              <p className="text-foreground leading-relaxed">
                 {product.description}
               </p>
             </div>

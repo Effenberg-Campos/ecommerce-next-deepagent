@@ -78,20 +78,20 @@ export default function OrdersPage() {
   if (status === 'loading' || loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <p className="text-gray-600">Cargando órdenes...</p>
+        <p className="text-muted-foreground">Cargando órdenes...</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
+    <div className="min-h-screen bg-background py-12">
       <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h1 className="text-4xl font-bold text-gray-900 mb-8">Mis Órdenes</h1>
+          <h1 className="text-4xl font-bold text-foreground mb-8">Mis Órdenes</h1>
         </motion.div>
 
         {orders?.length === 0 ? (
@@ -99,13 +99,13 @@ export default function OrdersPage() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="text-center py-12 bg-white rounded-2xl shadow-lg"
+            className="text-center py-12 bg-card rounded-2xl shadow-lg"
           >
-            <Package className="h-24 w-24 text-gray-300 mx-auto mb-4" />
-            <p className="text-xl text-gray-600 mb-6">No tienes órdenes aún</p>
+            <Package className="h-24 w-24 text-muted-foreground mx-auto mb-4" />
+            <p className="text-xl text-muted-foreground mb-6">No tienes órdenes aún</p>
             <Button
               onClick={() => router.push('/')}
-              className="bg-[#60B5FF] hover:bg-[#4A9FE8]"
+              className="bg-primary hover:bg-primary/90"
             >
               Comenzar a comprar
             </Button>
@@ -118,12 +118,12 @@ export default function OrdersPage() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="bg-white rounded-lg shadow-md p-6"
+                className="bg-card rounded-lg shadow-md p-6"
               >
                 <div className="flex items-center justify-between mb-4">
                   <div>
-                    <p className="text-sm text-gray-600">Orden #{order.id.slice(0, 8)}</p>
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-muted-foreground">Orden #{order.id.slice(0, 8)}</p>
+                    <p className="text-sm text-muted-foreground">
                       {new Date(order.createdAt).toLocaleDateString('es-ES', {
                         year: 'numeric',
                         month: 'long',
@@ -135,11 +135,11 @@ export default function OrdersPage() {
                 </div>
 
                 <div className="border-t pt-4">
-                  <p className="text-sm text-gray-600 mb-2">
+                  <p className="text-sm text-muted-foreground mb-2">
                     {order?.items?.length ?? 0} producto(s)
                   </p>
                   <div className="flex items-center justify-between">
-                    <p className="text-2xl font-bold text-[#60B5FF]">
+                    <p className="text-2xl font-bold text-primary">
                       ${order.total?.toFixed?.(2) ?? '0.00'}
                     </p>
                     <Button

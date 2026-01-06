@@ -101,20 +101,20 @@ export default function CartPage() {
   if (status === 'loading' || loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <p className="text-gray-600">Cargando carrito...</p>
+        <p className="text-muted-foreground">Cargando carrito...</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
+    <div className="min-h-screen bg-background py-12">
       <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h1 className="text-4xl font-bold text-gray-900 mb-8">Mi Carrito</h1>
+          <h1 className="text-4xl font-bold text-foreground mb-8">Mi Carrito</h1>
         </motion.div>
 
         {cartItems?.length === 0 ? (
@@ -122,13 +122,13 @@ export default function CartPage() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="text-center py-12 bg-white rounded-2xl shadow-lg"
+            className="text-center py-12 bg-card rounded-2xl shadow-lg"
           >
-            <ShoppingBag className="h-24 w-24 text-gray-300 mx-auto mb-4" />
-            <p className="text-xl text-gray-600 mb-6">Tu carrito está vacío</p>
+            <ShoppingBag className="h-24 w-24 text-muted-foreground mx-auto mb-4" />
+            <p className="text-xl text-muted-foreground mb-6">Tu carrito está vacío</p>
             <Button
               onClick={() => router.push('/')}
-              className="bg-[#60B5FF] hover:bg-[#4A9FE8]"
+              className="bg-primary hover:bg-primary/90"
             >
               Ir a comprar
             </Button>
@@ -143,10 +143,10 @@ export default function CartPage() {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.4, delay: index * 0.1 }}
-                  className="bg-white rounded-lg shadow-md p-6"
+                  className="bg-card rounded-lg shadow-md p-6 border border-border"
                 >
                   <div className="flex gap-4">
-                    <div className="relative h-24 w-24 flex-shrink-0 rounded-md overflow-hidden bg-gray-100">
+                    <div className="relative h-24 w-24 flex-shrink-0 rounded-md overflow-hidden bg-muted">
                       {item?.product?.images?.[0] ? (
                         <Image
                           src={item.product.images[0]}
@@ -155,20 +155,20 @@ export default function CartPage() {
                           className="object-cover"
                         />
                       ) : (
-                        <div className="flex h-full items-center justify-center text-gray-400 text-xs">
+                        <div className="flex h-full items-center justify-center text-muted-foreground text-xs">
                           Sin imagen
                         </div>
                       )}
                     </div>
 
                     <div className="flex-1">
-                      <h3 className="text-lg font-semibold text-gray-900">
+                      <h3 className="text-lg font-semibold text-foreground">
                         {item?.product?.name}
                       </h3>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm text-muted-foreground">
                         {item?.product?.category?.name}
                       </p>
-                      <p className="text-lg font-bold text-[#60B5FF] mt-2">
+                      <p className="text-lg font-bold text-primary mt-2">
                         ${item?.product?.price?.toFixed?.(2) ?? '0.00'}
                       </p>
                     </div>
@@ -178,7 +178,7 @@ export default function CartPage() {
                         variant="ghost"
                         size="sm"
                         onClick={() => removeItem(item.id)}
-                        className="text-red-500 hover:text-red-700 hover:bg-red-50"
+                        className="text-destructive hover:text-destructive hover:bg-destructive/10"
                       >
                         <Trash2 className="h-5 w-5" />
                       </Button>
@@ -191,7 +191,7 @@ export default function CartPage() {
                         >
                           -
                         </Button>
-                        <span className="text-lg font-semibold px-3">
+                        <span className="text-lg font-semibold px-3 text-foreground">
                           {item.quantity}
                         </span>
                         <Button
@@ -215,20 +215,20 @@ export default function CartPage() {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="lg:col-span-1"
             >
-              <div className="bg-white rounded-lg shadow-lg p-6 sticky top-24">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">
+              <div className="bg-card rounded-lg shadow-lg p-6 sticky top-24 border border-border">
+                <h2 className="text-2xl font-bold text-foreground mb-6">
                   Resumen
                 </h2>
                 
                 <div className="space-y-4 mb-6">
-                  <div className="flex justify-between text-gray-600">
+                  <div className="flex justify-between text-muted-foreground">
                     <span>Subtotal</span>
                     <span>${total?.toFixed?.(2) ?? '0.00'}</span>
                   </div>
                   <div className="border-t pt-4">
-                    <div className="flex justify-between text-xl font-bold">
+                    <div className="flex justify-between text-xl font-bold text-foreground">
                       <span>Total</span>
-                      <span className="text-[#60B5FF]">
+                      <span className="text-primary">
                         ${total?.toFixed?.(2) ?? '0.00'}
                       </span>
                     </div>
@@ -237,7 +237,7 @@ export default function CartPage() {
 
                 <Button
                   onClick={() => router.push('/checkout')}
-                  className="w-full bg-[#60B5FF] hover:bg-[#4A9FE8] py-6 text-lg"
+                  className="w-full bg-primary hover:bg-primary/90 py-6 text-lg"
                 >
                   Proceder al Pago
                 </Button>

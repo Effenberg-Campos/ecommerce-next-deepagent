@@ -111,20 +111,20 @@ export default function CheckoutPage() {
   if (status === 'loading' || loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <p className="text-gray-600">Cargando...</p>
+        <p className="text-muted-foreground">Cargando...</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
+    <div className="min-h-screen bg-background py-12">
       <div className="container mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h1 className="text-4xl font-bold text-gray-900 mb-8">Checkout</h1>
+          <h1 className="text-4xl font-bold text-foreground mb-8">Checkout</h1>
         </motion.div>
 
         <motion.form
@@ -132,14 +132,14 @@ export default function CheckoutPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           onSubmit={handleSubmit}
-          className="bg-white rounded-2xl shadow-lg p-8 space-y-6"
+          className="bg-card rounded-2xl shadow-lg p-8 space-y-6 border border-border"
         >
           <div>
             <h2 className="text-2xl font-semibold mb-6">Información de Envío</h2>
             
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-foreground mb-2">
                   Nombre Completo
                 </label>
                 <Input
@@ -152,7 +152,7 @@ export default function CheckoutPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-foreground mb-2">
                   Email
                 </label>
                 <Input
@@ -165,7 +165,7 @@ export default function CheckoutPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-foreground mb-2">
                   Dirección de Envío
                 </label>
                 <textarea
@@ -173,7 +173,7 @@ export default function CheckoutPage() {
                   onChange={(e) => setShippingAddress(e.target.value)}
                   required
                   rows={3}
-                  className="w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#60B5FF]"
+                  className="w-full rounded-md border border-input bg-background px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
                   placeholder="Calle, ciudad, código postal, país"
                 />
               </div>
@@ -184,7 +184,7 @@ export default function CheckoutPage() {
             <h2 className="text-2xl font-semibold mb-4">Resumen del Pedido</h2>
             <div className="space-y-2">
               {cartItems?.map?.(item => (
-                <div key={item.id} className="flex justify-between text-gray-700">
+                <div key={item.id} className="flex justify-between text-muted-foreground">
                   <span>
                     {item?.product?.name} x {item?.quantity}
                   </span>
@@ -194,9 +194,9 @@ export default function CheckoutPage() {
                 </div>
               )) || null}
               <div className="border-t pt-2 mt-2">
-                <div className="flex justify-between text-xl font-bold">
+                <div className="flex justify-between text-xl font-bold text-foreground">
                   <span>Total</span>
-                  <span className="text-[#60B5FF]">
+                  <span className="text-primary">
                     ${total?.toFixed?.(2) ?? '0.00'}
                   </span>
                 </div>
@@ -207,12 +207,12 @@ export default function CheckoutPage() {
           <Button
             type="submit"
             disabled={submitting}
-            className="w-full bg-[#60B5FF] hover:bg-[#4A9FE8] py-6 text-lg"
+            className="w-full bg-primary hover:bg-primary/90 py-6 text-lg"
           >
             {submitting ? 'Redirigiendo a Stripe...' : 'Proceder al Pago'}
           </Button>
 
-          <p className="text-sm text-gray-500 text-center">
+          <p className="text-sm text-muted-foreground text-center">
             Serás redirigido a Stripe para completar tu pago de forma segura.
           </p>
         </motion.form>

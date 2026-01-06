@@ -1,0 +1,419 @@
+/**
+ * INSTRUCCIONES PARA ACTUALIZAR COLORES DEL TEMA
+ * Este archivo contiene todos los reemplazos necesarios para completar
+ * el soporte de tema oscuro/claro en todas las páginas
+ */
+
+// ============================================================================
+// ARCHIVO: app/orders/page.tsx
+// ============================================================================
+
+// REEMPLAZO 1: Línea ~87
+// BUSCAR:
+// <div className="min-h-screen bg-gray-50 py-12">
+
+// REEMPLAZAR CON:
+// <div className="min-h-screen bg-background py-12">
+
+// REEMPLAZO 2: Línea ~94
+// BUSCAR:
+// <h1 className="text-4xl font-bold text-gray-900 mb-8">Mis Órdenes</h1>
+
+// REEMPLAZAR CON:
+// <h1 className="text-4xl font-bold text-foreground mb-8">Mis Órdenes</h1>
+
+// REEMPLAZO 3: Línea ~102
+// BUSCAR:
+// className="text-center py-12 bg-white rounded-2xl shadow-lg"
+
+// REEMPLAZAR CON:
+// className="text-center py-12 bg-card rounded-2xl shadow-lg"
+
+// REEMPLAZO 4: Línea ~104-106
+// BUSCAR:
+// <Package className="h-24 w-24 text-gray-300 mx-auto mb-4" />
+// <p className="text-xl text-gray-600 mb-6">No tienes órdenes aún</p>
+
+// REEMPLAZAR CON:
+// <Package className="h-24 w-24 text-muted-foreground mx-auto mb-4" />
+// <p className="text-xl text-muted-foreground mb-6">No tienes órdenes aún</p>
+
+// REEMPLAZO 5: Línea ~108
+// BUSCAR:
+// className="bg-[#60B5FF] hover:bg-[#4A9FE8]"
+
+// REEMPLAZAR CON:
+// className="bg-primary hover:bg-primary/90"
+
+// REEMPLAZO 6: Línea ~121
+// BUSCAR:
+// className="bg-white rounded-lg shadow-md p-6"
+
+// REEMPLAZAR CON:
+// className="bg-card rounded-lg shadow-md p-6"
+
+// REEMPLAZO 7: Líneas ~125-126
+// BUSCAR:
+// <p className="text-sm text-gray-600">Orden #{order.id.slice(0, 8)}</p>
+// <p className="text-sm text-gray-500">
+
+// REEMPLAZAR CON:
+// <p className="text-sm text-muted-foreground">Orden #{order.id.slice(0, 8)}</p>
+// <p className="text-sm text-muted-foreground">
+
+// REEMPLAZO 8: Líneas ~138-142
+// BUSCAR:
+// <p className="text-sm text-gray-600 mb-2">
+//   {order?.items?.length ?? 0} producto(s)
+// </p>
+// <div className="flex items-center justify-between">
+//   <p className="text-2xl font-bold text-[#60B5FF]">
+
+// REEMPLAZAR CON:
+// <p className="text-sm text-muted-foreground mb-2">
+//   {order?.items?.length ?? 0} producto(s)
+// </p>
+// <div className="flex items-center justify-between">
+//   <p className="text-2xl font-bold text-primary">
+
+// REEMPLAZO 9: Línea ~81 (texto de carga)
+// BUSCAR:
+// <p className="text-gray-600">Cargando órdenes...</p>
+
+// REEMPLAZAR CON:
+// <p className="text-muted-foreground">Cargando órdenes...</p>
+
+
+// ============================================================================
+// ARCHIVO: app/orders/[id]/page.tsx
+// ============================================================================
+
+// REEMPLAZO 1: Línea ~94
+// BUSCAR:
+// <p className="text-gray-600">Cargando orden...</p>
+
+// REEMPLAZAR CON:
+// <p className="text-muted-foreground">Cargando orden...</p>
+
+// REEMPLAZO 2: Línea ~104
+// BUSCAR:
+// <div className="min-h-screen bg-gray-50 py-12">
+
+// REEMPLAZAR CON:
+// <div className="min-h-screen bg-background py-12">
+
+// REEMPLAZO 3: Línea ~122
+// BUSCAR:
+// <div className="bg-white rounded-2xl shadow-lg p-8">
+
+// REEMPLAZAR CON:
+// <div className="bg-card rounded-2xl shadow-lg p-8">
+
+// REEMPLAZO 4: Líneas ~125-128
+// BUSCAR:
+// <h1 className="text-3xl font-bold text-gray-900 mb-2">
+//   Orden #{order.id.slice(0, 8)}
+// </h1>
+// <p className="text-gray-600">
+
+// REEMPLAZAR CON:
+// <h1 className="text-3xl font-bold text-foreground mb-2">
+//   Orden #{order.id.slice(0, 8)}
+// </h1>
+// <p className="text-muted-foreground">
+
+// REEMPLAZO 5: Línea ~142
+// BUSCAR:
+// <Package className="h-5 w-5 text-[#60B5FF]" />
+
+// REEMPLAZAR CON:
+// <Package className="h-5 w-5 text-primary" />
+
+// REEMPLAZO 6: Líneas ~145-147
+// BUSCAR:
+// <p className="text-gray-700">{order.shippingName}</p>
+// <p className="text-gray-600">{order.shippingEmail}</p>
+// <p className="text-gray-600 mt-2">{order.shippingAddress}</p>
+
+// REEMPLAZAR CON:
+// <p className="text-foreground">{order.shippingName}</p>
+// <p className="text-muted-foreground">{order.shippingEmail}</p>
+// <p className="text-muted-foreground mt-2">{order.shippingAddress}</p>
+
+// REEMPLAZO 7: Línea ~153
+// BUSCAR:
+// <span className="text-gray-600">Subtotal</span>
+
+// REEMPLAZAR CON:
+// <span className="text-muted-foreground">Subtotal</span>
+
+// REEMPLAZO 8: Línea ~159
+// BUSCAR:
+// <span className="text-[#60B5FF]">${order.total?.toFixed?.(2) ?? '0.00'}</span>
+
+// REEMPLAZAR CON:
+// <span className="text-primary">${order.total?.toFixed?.(2) ?? '0.00'}</span>
+
+// REEMPLAZO 9: Líneas ~168-169
+// BUSCAR:
+// <div className="bg-white rounded-2xl shadow-lg p-8">
+//   <h2 className="text-2xl font-bold text-gray-900 mb-6">Productos</h2>
+
+// REEMPLAZAR CON:
+// <div className="bg-card rounded-2xl shadow-lg p-8">
+//   <h2 className="text-2xl font-bold text-foreground mb-6">Productos</h2>
+
+// REEMPLAZO 10: Línea ~179
+// BUSCAR:
+// <div className="relative h-20 w-20 flex-shrink-0 rounded-md overflow-hidden bg-gray-100">
+
+// REEMPLAZAR CON:
+// <div className="relative h-20 w-20 flex-shrink-0 rounded-md overflow-hidden bg-muted">
+
+// REEMPLAZO 11: Línea ~188
+// BUSCAR:
+// <div className="flex h-full items-center justify-center text-gray-400 text-xs">
+
+// REEMPLAZAR CON:
+// <div className="flex h-full items-center justify-center text-muted-foreground text-xs">
+
+// REEMPLAZO 12: Líneas ~194-205
+// BUSCAR:
+// <h3 className="text-lg font-semibold text-gray-900">
+//   {item.product?.name}
+// </h3>
+// <p className="text-gray-600">
+//   Precio: ${item.price?.toFixed?.(2) ?? '0.00'}
+// </p>
+// <p className="text-lg font-bold text-gray-900">
+//   ${((item.price || 0) * (item.quantity || 0)).toFixed(2)}
+// </p>
+// <p className="text-sm text-gray-600">
+//   Cantidad: {item.quantity}
+// </p>
+
+// REEMPLAZAR CON:
+// <h3 className="text-lg font-semibold text-foreground">
+//   {item.product?.name}
+// </h3>
+// <p className="text-muted-foreground">
+//   Precio: ${item.price?.toFixed?.(2) ?? '0.00'}
+// </p>
+// <p className="text-lg font-bold text-foreground">
+//   ${((item.price || 0) * (item.quantity || 0)).toFixed(2)}
+// </p>
+// <p className="text-sm text-muted-foreground">
+//   Cantidad: {item.quantity}
+// </p>
+
+
+// ============================================================================
+// ARCHIVO: app/products/[id]/page.tsx
+// ============================================================================
+
+// REEMPLAZO 1: Línea ~88
+// BUSCAR:
+// <p className="text-gray-600">Cargando...</p>
+
+// REEMPLAZAR CON:
+// <p className="text-muted-foreground">Cargando...</p>
+
+// REEMPLAZO 2: Línea ~98
+// BUSCAR:
+// <div className="min-h-screen bg-gray-50 py-12">
+
+// REEMPLAZAR CON:
+// <div className="min-h-screen bg-background py-12">
+
+// REEMPLAZO 3: Línea ~113
+// BUSCAR:
+// className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white rounded-2xl shadow-lg p-8"
+
+// REEMPLAZAR CON:
+// className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-card rounded-2xl shadow-lg p-8"
+
+// REEMPLAZO 4: Línea ~117
+// BUSCAR:
+// <div className="relative aspect-square w-full rounded-lg overflow-hidden bg-gray-100">
+
+// REEMPLAZAR CON:
+// <div className="relative aspect-square w-full rounded-lg overflow-hidden bg-muted">
+
+// REEMPLAZO 5: Línea ~126
+// BUSCAR:
+// <div className="flex h-full items-center justify-center text-gray-400">
+
+// REEMPLAZAR CON:
+// <div className="flex h-full items-center justify-center text-muted-foreground">
+
+// REEMPLAZO 6: Línea ~156
+// BUSCAR:
+// <p className="text-sm text-[#60B5FF] font-medium uppercase mb-2">
+
+// REEMPLAZAR CON:
+// <p className="text-sm text-primary font-medium uppercase mb-2">
+
+// REEMPLAZO 7: Líneas ~159-162
+// BUSCAR:
+// <h1 className="text-4xl font-bold text-gray-900 mb-4">
+//   {product.name}
+// </h1>
+// <p className="text-3xl font-bold text-[#60B5FF]">
+
+// REEMPLAZAR CON:
+// <h1 className="text-4xl font-bold text-foreground mb-4">
+//   {product.name}
+// </h1>
+// <p className="text-3xl font-bold text-primary">
+
+// REEMPLAZO 8: Línea ~169
+// BUSCAR:
+// <p className="text-gray-700 leading-relaxed">
+
+// REEMPLAZAR CON:
+// <p className="text-foreground leading-relaxed">
+
+// REEMPLAZO 9: Línea ~200
+// BUSCAR:
+// className="w-full bg-[#60B5FF] hover:bg-[#4A9FE8] py-6 text-lg gap-2"
+
+// REEMPLAZAR CON:
+// className="w-full bg-primary hover:bg-primary/90 py-6 text-lg gap-2"
+
+// REEMPLAZO 10: Líneas ~207-208
+// BUSCAR:
+// <div className="bg-gray-50 rounded-lg p-4">
+//   <p className="text-sm text-gray-600">
+
+// REEMPLAZAR CON:
+// <div className="bg-muted rounded-lg p-4">
+//   <p className="text-sm text-muted-foreground">
+
+
+// ============================================================================
+// ARCHIVO: app/cart/page.tsx
+// ============================================================================
+
+// REEMPLAZO 1: Línea ~104
+// BUSCAR:
+// <p className="text-gray-600">Cargando carrito...</p>
+
+// REEMPLAZAR CON:
+// <p className="text-muted-foreground">Cargando carrito...</p>
+
+// REEMPLAZO 2: Línea ~110
+// BUSCAR:
+// <div className="min-h-screen bg-gray-50 py-12">
+
+// REEMPLAZAR CON:
+// <div className="min-h-screen bg-background py-12">
+
+// REEMPLAZO 3: Línea ~117
+// BUSCAR:
+// <h1 className="text-4xl font-bold text-gray-900 mb-8">Mi Carrito</h1>
+
+// REEMPLAZAR CON:
+// <h1 className="text-4xl font-bold text-foreground mb-8">Mi Carrito</h1>
+
+// REEMPLAZO 4: Línea ~125
+// BUSCAR:
+// className="text-center py-12 bg-white rounded-2xl shadow-lg"
+
+// REEMPLAZAR CON:
+// className="text-center py-12 bg-card rounded-2xl shadow-lg"
+
+// REEMPLAZO 5: Líneas ~127-128
+// BUSCAR:
+// <ShoppingBag className="h-24 w-24 text-gray-300 mx-auto mb-4" />
+// <p className="text-xl text-gray-600 mb-6">Tu carrito está vacío</p>
+
+// REEMPLAZAR CON:
+// <ShoppingBag className="h-24 w-24 text-muted-foreground mx-auto mb-4" />
+// <p className="text-xl text-muted-foreground mb-6">Tu carrito está vacío</p>
+
+// REEMPLAZO 6: Línea ~130
+// BUSCAR:
+// className="bg-[#60B5FF] hover:bg-[#4A9FE8]"
+
+// REEMPLAZAR CON:
+// className="bg-primary hover:bg-primary/90"
+
+// REEMPLAZO 7: Línea ~146
+// BUSCAR:
+// className="bg-white rounded-lg shadow-md p-6"
+
+// REEMPLAZAR CON:
+// className="bg-card rounded-lg shadow-md p-6"
+
+// REEMPLAZO 8: Línea ~149
+// BUSCAR:
+// <div className="relative h-24 w-24 flex-shrink-0 rounded-md overflow-hidden bg-gray-100">
+
+// REEMPLAZAR CON:
+// <div className="relative h-24 w-24 flex-shrink-0 rounded-md overflow-hidden bg-muted">
+
+// REEMPLAZO 9: Buscar todos los text-gray- en cart/page.tsx y reemplazarlos con:
+// text-gray-900 -> text-foreground
+// text-gray-700 -> text-foreground
+// text-gray-600 -> text-muted-foreground
+// text-gray-400 -> text-muted-foreground
+
+// REEMPLAZO 10: Línea ~218
+// BUSCAR:
+// <div className="bg-white rounded-lg shadow-lg p-6 sticky top-24">
+
+// REEMPLAZAR CON:
+// <div className="bg-card rounded-lg shadow-lg p-6 sticky top-24">
+
+// REEMPLAZO 11: Buscar bg-[#60B5FF] y reemplazar con bg-primary
+// REEMPLAZO 12: Buscar hover:bg-[#4A9FE8] y reemplazar con hover:bg-primary/90
+// REEMPLAZO 13: Buscar text-[#60B5FF] y reemplazar con text-primary
+
+
+// ============================================================================
+// ARCHIVO: app/checkout/page.tsx
+// ============================================================================
+
+// Reemplazar todos los:
+// bg-gray-50 -> bg-background
+// bg-white -> bg-card
+// text-gray-900 -> text-foreground
+// text-gray-700 -> text-foreground
+// text-gray-600 -> text-muted-foreground
+// text-gray-400 -> text-muted-foreground
+// bg-[#60B5FF] -> bg-primary
+// hover:bg-[#4A9FE8] -> hover:bg-primary/90
+// text-[#60B5FF] -> text-primary
+
+
+// ============================================================================
+// ARCHIVO: app/checkout/success/page.tsx
+// ============================================================================
+
+// Reemplazar todos los:
+// bg-gray-50 -> bg-background
+// bg-white -> bg-card
+// text-gray-900 -> text-foreground
+// text-gray-600 -> text-muted-foreground
+// bg-[#60B5FF] -> bg-primary
+// hover:bg-[#4A9FE8] -> hover:bg-primary/90
+
+
+// ============================================================================
+// ARCHIVOS DE ADMIN (todos los archivos en app/admin/)
+// ============================================================================
+
+// Para TODOS los archivos en app/admin/, reemplazar:
+// bg-gray-50 -> bg-background
+// bg-white -> bg-card
+// bg-gray-100 -> bg-muted
+// text-gray-900 -> text-foreground
+// text-gray-700 -> text-foreground
+// text-gray-600 -> text-muted-foreground
+// text-gray-500 -> text-muted-foreground
+// text-gray-400 -> text-muted-foreground
+// bg-[#60B5FF] -> bg-primary
+// hover:bg-[#4A9FE8] -> hover:bg-primary/90
+// text-[#60B5FF] -> text-primary
+
+// También buscar hover:bg-gray-100 -> hover:bg-muted

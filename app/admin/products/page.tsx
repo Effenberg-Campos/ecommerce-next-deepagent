@@ -210,13 +210,13 @@ export default function AdminProductsPage() {
   if (status === 'loading' || loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <p className="text-gray-600">Cargando...</p>
+        <p className="text-muted-foreground">Cargando...</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-background py-8">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center gap-4">
@@ -228,11 +228,11 @@ export default function AdminProductsPage() {
               <ArrowLeft className="h-4 w-4" />
               Volver
             </Button>
-            <h1 className="text-4xl font-bold text-gray-900">Gestionar Productos</h1>
+            <h1 className="text-4xl font-bold text-foreground">Gestionar Productos</h1>
           </div>
           <Button
             onClick={openCreateModal}
-            className="bg-[#60B5FF] hover:bg-[#4A9FE8] gap-2"
+            className="bg-primary hover:bg-primary/90 gap-2"
           >
             <Plus className="h-5 w-5" />
             Nuevo Producto
@@ -246,9 +246,9 @@ export default function AdminProductsPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: index * 0.05 }}
-              className="bg-white rounded-lg shadow-md p-6"
+              className="bg-card rounded-lg shadow-md p-6 border border-border"
             >
-              <div className="relative aspect-square w-full mb-4 rounded-md overflow-hidden bg-gray-100">
+              <div className="relative aspect-square w-full mb-4 rounded-md overflow-hidden bg-muted">
                 {product?.images?.[0] ? (
                   <Image
                     src={product.images[0]}
@@ -257,24 +257,24 @@ export default function AdminProductsPage() {
                     className="object-cover"
                   />
                 ) : (
-                  <div className="flex h-full items-center justify-center text-gray-400">
+                  <div className="flex h-full items-center justify-center text-muted-foreground">
                     Sin imagen
                   </div>
                 )}
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+              <h3 className="text-lg font-semibold text-foreground mb-2">
                 {product.name}
               </h3>
-              <p className="text-sm text-gray-600 line-clamp-2 mb-2">
+              <p className="text-sm text-muted-foreground line-clamp-2 mb-2">
                 {product.description}
               </p>
-              <p className="text-sm text-gray-600 mb-2">
+              <p className="text-sm text-muted-foreground mb-2">
                 Categoría: {product?.category?.name}
               </p>
-              <p className="text-xl font-bold text-[#60B5FF] mb-2">
+              <p className="text-xl font-bold text-primary mb-2">
                 ${product.price?.toFixed?.(2) ?? '0.00'}
               </p>
-              <p className="text-sm text-gray-600 mb-4">
+              <p className="text-sm text-muted-foreground mb-4">
                 Stock: {product.stock}
               </p>
               <div className="flex gap-2">
@@ -291,7 +291,7 @@ export default function AdminProductsPage() {
                   onClick={() => handleDelete(product.id)}
                   variant="outline"
                   size="sm"
-                  className="text-red-500 hover:text-red-700 hover:bg-red-50"
+                  className="text-destructive hover:text-destructive hover:bg-destructive/10"
                 >
                   <Trash2 className="h-4 w-4" />
                 </Button>
@@ -308,15 +308,15 @@ export default function AdminProductsPage() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.3 }}
-            className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-8"
+            className="bg-card rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-8 border border-border"
           >
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            <h2 className="text-2xl font-bold text-foreground mb-6">
               {editingProduct ? 'Editar Producto' : 'Nuevo Producto'}
             </h2>
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-foreground mb-2">
                   Nombre
                 </label>
                 <Input
@@ -329,7 +329,7 @@ export default function AdminProductsPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-foreground mb-2">
                   Descripción
                 </label>
                 <textarea
@@ -337,14 +337,14 @@ export default function AdminProductsPage() {
                   onChange={(e) => setDescription(e.target.value)}
                   required
                   rows={4}
-                  className="w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#60B5FF]"
+                  className="w-full rounded-md border border-input bg-background px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
                   placeholder="Descripción del producto"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-foreground mb-2">
                     Precio
                   </label>
                   <Input
@@ -358,7 +358,7 @@ export default function AdminProductsPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-foreground mb-2">
                     Stock
                   </label>
                   <Input
@@ -372,14 +372,14 @@ export default function AdminProductsPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-foreground mb-2">
                   Categoría
                 </label>
                 <select
                   value={categoryId}
                   onChange={(e) => setCategoryId(e.target.value)}
                   required
-                  className="w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#60B5FF]"
+                  className="w-full rounded-md border border-input bg-background px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
                 >
                   <option value="">Selecciona una categoría</option>
                   {categories?.map?.((cat) => (
@@ -391,12 +391,12 @@ export default function AdminProductsPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-foreground mb-2">
                   Imágenes
                 </label>
-                <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
-                  <Upload className="h-12 w-12 text-gray-400 mx-auto mb-2" />
-                  <p className="text-sm text-gray-600 mb-4">
+                <div className="border-2 border-dashed border-border rounded-lg p-6 text-center bg-muted/30">
+                  <Upload className="h-12 w-12 text-muted-foreground mx-auto mb-2" />
+                  <p className="text-sm text-muted-foreground mb-4">
                     {uploading ? 'Subiendo...' : 'Sube imágenes del producto'}
                   </p>
                   <input
@@ -423,12 +423,12 @@ export default function AdminProductsPage() {
                 {uploadedImages?.length > 0 && (
                   <div className="grid grid-cols-4 gap-2 mt-4">
                     {uploadedImages.map((img, idx) => (
-                      <div key={idx} className="relative aspect-square rounded-md overflow-hidden bg-gray-100">
+                      <div key={idx} className="relative aspect-square rounded-md overflow-hidden bg-muted">
                         <Image src={img} alt={`Preview ${idx}`} fill className="object-cover" />
                         <button
                           type="button"
                           onClick={() => setUploadedImages(uploadedImages.filter((_, i) => i !== idx))}
-                          className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600"
+                          className="absolute top-1 right-1 bg-destructive text-destructive-foreground rounded-full p-1 hover:bg-destructive/90"
                         >
                           <Trash2 className="h-3 w-3" />
                         </button>
@@ -449,7 +449,7 @@ export default function AdminProductsPage() {
                 </Button>
                 <Button
                   type="submit"
-                  className="flex-1 bg-[#60B5FF] hover:bg-[#4A9FE8]"
+                  className="flex-1 bg-primary hover:bg-primary/90"
                 >
                   {editingProduct ? 'Actualizar' : 'Crear'}
                 </Button>

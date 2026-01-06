@@ -73,23 +73,23 @@ export function AdminSidebar() {
       {/* Sidebar */}
       <aside
         className={cn(
-          'fixed left-0 top-0 z-40 h-screen bg-white border-r border-gray-200 transition-all duration-300',
+          'fixed left-0 top-0 z-40 h-screen bg-card border-r border-border transition-all duration-300',
           collapsed ? 'w-20' : 'w-64',
           mobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
         )}
       >
         <div className="flex flex-col h-full">
           {/* Header */}
-          <div className="flex items-center justify-between p-6 border-b border-gray-200">
+          <div className="flex items-center justify-between p-6 border-b border-border">
             {!collapsed && (
               <div className="flex items-center space-x-2">
                 <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg" />
-                <span className="font-bold text-xl">Admin</span>
+                <span className="font-bold text-xl text-foreground">Admin</span>
               </div>
             )}
             <button
               onClick={() => setCollapsed(!collapsed)}
-              className="hidden lg:flex p-2 hover:bg-gray-100 rounded-lg transition-colors"
+              className="hidden lg:flex p-2 hover:bg-muted rounded-lg transition-colors"
             >
               <ChevronLeft
                 className={cn(
@@ -114,8 +114,8 @@ export function AdminSidebar() {
                   className={cn(
                     'flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors',
                     isActive
-                      ? 'bg-blue-50 text-blue-600'
-                      : 'text-gray-700 hover:bg-gray-100',
+                      ? 'bg-primary/10 text-primary'
+                      : 'text-foreground hover:bg-muted',
                     collapsed && 'justify-center'
                   )}
                 >
@@ -129,11 +129,11 @@ export function AdminSidebar() {
           </nav>
 
           {/* Footer */}
-          <div className="p-4 border-t border-gray-200">
+          <div className="p-4 border-t border-border">
             <button
               onClick={() => signOut({ callbackUrl: '/' })}
               className={cn(
-                'flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors w-full text-gray-700 hover:bg-red-50 hover:text-red-600',
+                'flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors w-full text-foreground hover:bg-destructive/10 hover:text-destructive',
                 collapsed && 'justify-center'
               )}
             >
